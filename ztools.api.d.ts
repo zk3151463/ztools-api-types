@@ -549,6 +549,13 @@ interface MainPushResult {
 
 type MainPushResultList = MainPushResult[] | Promise<MainPushResult[]>
 
+interface ThemeInfo {
+  isDark: boolean;
+  primaryColor: string;
+  customColor?: string;
+  windowMaterial: string;
+}
+
 interface ZToolsApi {
   /**
    * 插件应用进入时触发
@@ -633,6 +640,14 @@ interface ZToolsApi {
    * 是否深色模式
    */
   isDarkColors(): boolean;
+  /**
+   * 获取主题信息
+   */
+  getThemeInfo(): ThemeInfo;
+  /**
+   * 监听主题变化
+   */
+  onThemeChange(callback: (themeInfo: ThemeInfo) => void): void;
   /**
    * 获取用户
    */
